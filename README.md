@@ -41,10 +41,18 @@ npm run preview   # serve the production build locally
 - `src/common/defineControls.ts` — a small typed helper the example uses to
   describe its on-screen controls (sliders, color picker, view/camera
   selectors).
-- `src/main.ts` — the app shell for this standalone repo: sizes the canvas to
-  its container (device-pixel aware), boots the example, and renders its
-  controls as plain HTML inputs. This replaces the React/Tailwind control
-  panel and canvas-fitting logic that the TypeGPU docs site normally provides.
+- `src/main.ts` + `index.html` — the app shell for this standalone repo,
+  replacing the React/Tailwind control panel the TypeGPU docs site provides.
+  It gates on an actual WebGPU adapter before loading anything heavy, renders
+  the control dock (sliders with live readouts, segmented view switcher, color
+  swatch), and adds keyboard shortcuts, toasts and first-run hints.
+
+  Two details worth knowing before editing it: the example binds to a fixed set
+  of DOM selectors (`.status`, `.chooser`, `.source-row`, `.start-button`, …)
+  which `index.html` must keep intact, and `.status`/`.chooser` are toggled via
+  the `hidden` *property* — so the `[hidden]` CSS guards are load-bearing. The
+  renderer also sizes the canvas backing store itself to a square every frame,
+  which is why the viewport is locked to a 1:1 CSS box.
 - Model weights are **not** stored in this repo — they're fetched at runtime
   from a hosted, revision-pinned bundle (see `src/example/model-store.ts`).
 
