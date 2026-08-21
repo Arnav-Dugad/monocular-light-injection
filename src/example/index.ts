@@ -14,7 +14,8 @@ import { RelightMode } from './shaders.ts';
 const VIEW_MODES = ['relit', 'camera', 'depth', 'normals'] as const;
 const FACING_MODES = ['front', 'back'] as const;
 const CAMERA_FRAME_RATE = 60;
-const DEMO_IMAGE_URL = '/assets/depthart/demo.jpg';
+/** Base-relative so the app works at a domain root or under a subpath (e.g. GitHub Pages) */
+const DEMO_IMAGE_URL = `${import.meta.env.BASE_URL}assets/depthart/demo.jpg`;
 
 const canvas = document.querySelector('canvas') as HTMLCanvasElement;
 const video = document.querySelector('video') as HTMLVideoElement;
