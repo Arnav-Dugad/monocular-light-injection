@@ -1,0 +1,21 @@
+{
+  "name": "monocular-light-injection",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone TypeGPU example: relight a live camera feed or photo using a WebGPU depth-inference model, extracted from software-mansion/TypeGPU.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "typegpu": "^0.12.1"
+  },
+  "devDependencies": {
+    "@webgpu/types": "^0.1.66",
+    "typescript": "^5.7.3",
+    "unplugin-typegpu": "^0.12.2",
+    "vite": "^6.0.7"
+  }
+}
